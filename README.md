@@ -1,0 +1,3 @@
+go-graphql-playground
+=====================
+- [Schemas and Types | GraphQL](https://graphql.org/learn/schema/)
