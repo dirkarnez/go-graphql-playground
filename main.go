@@ -13,9 +13,11 @@ import (
 func main() {
 	app := iris.New()
 	
-	app.Any("/", iris.FromStd(playground.Handler("GraphQL playground", "/query")))
+	app.Any("/graphql", iris.FromStd(playground.Handler("GraphQL playground", "/query")))
 	app.Any("/query", iris.FromStd(handler.NewDefaultServer(generated.NewExecutableSchema(generated.Config{Resolvers: &graph.Resolver{}}))))
 	
+	app.HandleDir("/", "./public")
+
 	err := app.Run(
 		// Start the web server at localhost:8080
 		iris.Addr(":9000"),
